@@ -1,7 +1,7 @@
 ![Graffter Banner](images/banner.jpg)
 # ELSED: Enhanced Line SEgment Drawing
 
-This repository contains the source code of ELSED: Enhanced Line SEgment Drawing the fastest line segment detector in the literature.
+This repository contains the source code of [ELSED: Enhanced Line SEgment Drawing](https://arxiv.org/abs/2108.03144) the fastest line segment detector in the literature.
 
 ![Graffter header image](images/header.jpg)
 
