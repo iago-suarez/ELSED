@@ -2,7 +2,8 @@
 # ELSED: Enhanced Line SEgment Drawing
 
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/iago-suarez/ELSED/blob/main/Python_ELSED.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/iago-suarez/ELSED/blob/main/Python_ELSED.ipynb) [![arXiv](https://img.shields.io/badge/arXiv-2108.03144-b31b1b.svg?style=plastic)](https://arxiv.org/abs/2108.03144)
+
 
 This repository contains the source code of [ELSED: Enhanced Line SEgment Drawing](https://arxiv.org/abs/2108.03144) the fastest line segment detector in the literature. It is ideal for resource-limited devices like drones of smartphones.
 
