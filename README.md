@@ -2,10 +2,10 @@
 # ELSED: Enhanced Line SEgment Drawing
 
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/iago-suarez/ELSED/blob/main/Python_ELSED.ipynb) [![arXiv](https://img.shields.io/badge/arXiv-2108.03144-b31b1b.svg?style=plastic)](https://arxiv.org/abs/2108.03144)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/iago-suarez/ELSED/blob/main/Python_ELSED.ipynb) [![arXiv](https://img.shields.io/badge/arXiv-2108.03144-b31b1b.svg?style=plastic)](https://arxiv.org/abs/2108.03144)  [![Project Page](https://badgen.net/badge/color/project/green?icon=awesome&label)](https//iago-suarez.con/ELSED)
 
 
-This repository contains the source code of [ELSED: Enhanced Line SEgment Drawing](https://arxiv.org/abs/2108.03144) the fastest line segment detector in the literature. It is ideal for resource-limited devices like drones of smartphones.
+This repository contains the source code of [ELSED: Enhanced Line SEgment Drawing](https://arxiv.org/abs/2108.03144) the fastest line segment detector in the literature. It is ideal for resource-limited devices like drones of smartphones. Visit the [**Project Webpage**](https//iago-suarez.con/ELSED) to try it online!
 
 ![Graffter header image](images/header.jpg)
 
@@ -47,10 +47,6 @@ The result for the provided image should be:
 ELSED detected: 305 (large) segments
 ELSED detected: 391 (short) segments
 ```
-
-### TODO
-In the future commits we plan to release the line detection evaluation code and wrappers to some other languages.
-
 
 ### Cite
 
