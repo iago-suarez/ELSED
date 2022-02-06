@@ -322,7 +322,9 @@ void ELSED::drawAnchorPoints(const uint8_t *dirImg,
           p = cv::Point2f(px.x, px.y) - perpDir * cv::Vec3f(px.x, px.y, 1).dot(l);
           // Get the values around the point p to do the bi-linear interpolation
           x0 = p.x < 0 ? 0 : p.x;
+          if (x0 >= imageWidth) x0 = imageWidth - 1;
           y0 = p.y < 0 ? 0 : p.y;
+          if (y0 >= imageHeight) y0 = imageHeight - 1;
           x1 = p.x + 1;
           if (x1 >= imageWidth) x1 = imageWidth - 1;
           y1 = p.y + 1;
