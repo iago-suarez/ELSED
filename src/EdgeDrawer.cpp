@@ -743,8 +743,8 @@ bool EdgeDrawer::canSegmentBeExtended(FullSegmentInfo &segment,
           // Depending on the segment extension pixels orientation, look the vertical or horizontal neighbors
           xOffset = horizontalValidationDir ? 0 : offset;
           yOffset = horizontalValidationDir ? offset : 0;
-          indexInArray = std::min(imageHeight, std::max(0, extPixel.y + yOffset)) * imageWidth
-              + std::min(imageWidth, std::max(0, extPixel.x + xOffset));
+          indexInArray = std::min(imageHeight-1, std::max(0, extPixel.y + yOffset)) * imageWidth
+              + std::min(imageWidth-1, std::max(0, extPixel.x + xOffset));
 
           a += pDxImg[indexInArray] * pDxImg[indexInArray];
           b += pDxImg[indexInArray] * pDyImg[indexInArray];
