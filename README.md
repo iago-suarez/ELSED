@@ -51,7 +51,7 @@ ELSED detected: 391 (short) segments
 ### Cite
 
 ```bibtex
-@misc{suarez2022elsed,
+@article{suarez2022elsed,
       title={ELSED: Enhanced Line SEgment Drawing}, 
       author={Iago Suárez and José M. Buenaposada and Luis Baumela},
       journal = {Pattern Recognition},
