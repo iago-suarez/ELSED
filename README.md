@@ -28,7 +28,25 @@ sudo make install
 ```
 </details>
 
-### Compile and Run
+### Using ELSED from python
+
+To install the python wrappers you just have to run:
+```
+sudo apt-get install libopencv-dev
+pip install setuptools
+pip install git+https://github.com/iago-suarez/ELSED.git
+```
+
+And you can start playing with it:
+```python
+import pyelsed
+import cv2
+
+img = cv2.imread('my_favourite_img.jpg', cv2.IMREAD_GRAYSCALE)
+segments, scores = pyelsed.detect(img)
+```
+
+### Using ELSED from C++
 
 The code contains a demo detecting large and short line segments in one image.
 The code can be compiled with Cmake:
