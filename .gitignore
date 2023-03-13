@@ -34,3 +34,5 @@
 # CLion files
 .idea/*
 cmake-build-*
+.ipynb_checkpoints/
+pyelsed.egg-info/
