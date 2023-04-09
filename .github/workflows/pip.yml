@@ -1,0 +1,32 @@
+name: Python
+
+on: [push]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+#        os: [ubuntu-20.04, ubuntu-22.04, macos-12, windows-2022]
+        os: [ubuntu-20.04, ubuntu-22.04]
+        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install python dependencies
+        run: |
+          sudo apt-get install -y build-essential cmake git libopencv-dev
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Build python package
+        run: pip install .
+      - name: Test with pytest
+        run: |
+          pytest -v pytests/tests.py --junitxml=test-reports/report.xml
