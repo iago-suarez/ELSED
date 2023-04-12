@@ -47,6 +47,8 @@ jobs:
           sudo make install
       - name: Install python dependencies
         run: |
+          ls
+          mkdir build && cd build && cmake .. && make
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Build python package
