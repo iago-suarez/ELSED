@@ -1,0 +1,54 @@
+name: Python Windows
+
+on: [push]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [windows-2022]
+        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Cache opencv
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-opencv
+        with:
+          path: |
+            C:/opencv4.0.0
+          key: ${{ runner.os }}-build-${{ env.cache-name }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install OpenCV
+        run: |
+          Choco-Install -PackageName innosetup --force
+          Choco-Install -PackageName cmake --force
+          $c="C:\opencv4.1.1"
+          if(-not (Test-Path $c))
+          {
+            git clone https://github.com/opencv/opencv.git --branch 4.1.1 --depth 1
+            cmake -G "MinGW Makefiles" -S opencv -B opencv/build -D CMAKE_INSTALL_PREFIX=C:/opencv4.1.1 -D ENABLE_PRECOMPILED_HEADERS=OFF -D WITH_MSMF=OFF -D BUILD_PERF_TESTS=OFF -D BUILD_TESTS=OFF -D BUILD_WITH_DEBUG_INFO=OFF -D BUILD_DOCS=OFF -D CMAKE_BUILD_TYPE=RELEASE
+            cd ./opencv/build
+            mingw32-make
+            mingw32-make install
+          }
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Build python package
+        run: pip install .
+      - name: Test with pytest
+        run: |
+          pytest -v pytests/tests.py --junitxml=test-reports/report.xml
