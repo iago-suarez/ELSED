@@ -320,6 +320,14 @@ void ELSED::drawAnchorPoints(const uint8_t *dirImg,
           // units (the distance between the pixel and the segment) in the direction
           // perpendicular to the segment (perpDir).
           p = cv::Point2f(px.x, px.y) - perpDir * cv::Vec3f(px.x, px.y, 1).dot(l);
+          // A segment whose two boundary pixels collapse to one has coincident endpoints, so
+          // the line above (their cross product) is a zero vector and normalizing it is
+          // 0/0 = NaN. The NaN reprojected point survives the clamps below (NaN < 0 is false)
+          // and converts to an out-of-range int index (INT_MIN on x86), reading the gradient
+          // array out of bounds and crashing (see issue #13). Stopgap: skip the NaN pixel so
+          // the degenerate segment collects zero inliers and is dropped; the endpoint
+          // bookkeeping that lets firstPx == lastPx happen is the real cause (#13 / #15).
+          if (p.x != p.x || p.y != p.y) continue;
           // Get the values around the point p to do the bi-linear interpolation
           x0 = p.x < 0 ? 0 : p.x;
           if (x0 >= imageWidth) x0 = imageWidth - 1;
